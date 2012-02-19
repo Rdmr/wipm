@@ -1,0 +1,39 @@
+==========================
+Wipm
+==========================
+
+:Author:  Radomir Azizov
+
+Purpose
+-------
+Wipm is a interactive graphical console for work with device that is running PyMite. 
+
+License
+-------
+Wipm is free software: you can redistribute it and/or modify
+it under the terms of the GNU LESSER GENERAL PUBLIC LICENSE Version 2.1.
+
+Wipm is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+Requirements
+------------
+Python 2.6.x
+wxPython 2.9
+Pyserial 2.6
+
+
+-------------
+Installation
+-------------
+You do not need to install Wipm.
+You do need to have Python, Pyserial and wxPython installed.
+(www.python.org, pyserial.sourceforge.net, www.wxpython.org).
+
+Just run wipm.py
+
+Tested On Windows7, Linux.
+
+
