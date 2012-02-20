@@ -5,7 +5,12 @@ import pmImgCreator
 from SerialConnection import SerialConnection
 
 MAX_OBJ_SIZE = 2048
+SERIALRX = wx.NewEventType()
+# bind to serial data receive events
+EVT_SERIALRX = wx.PyEventBinder(SERIALRX, 0)
 
+
+        
 class MySTC(PySTC.MySTC):
     def __init__(self, parent, parentFrame):
         PySTC.MySTC.__init__(self, parent)
@@ -82,12 +87,12 @@ class MySTC(PySTC.MySTC):
         self.AppendText(">")
         prev = ''
         for c in conn.read():
-
             if prev == '\n': self.AppendText(">")
             self.AppendText(c)
+            wx.Yield()
             prev = c
-            
+        
+        conn.close()    
         self.AppendText("\n")
-        conn.close()
         self.DocumentEnd()
        
