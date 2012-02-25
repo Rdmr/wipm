@@ -103,7 +103,7 @@ class MainWindow(wx.Frame):
 
     def OnAbout(self,e):
         # A message dialog box with an OK button. wx.OK is a standard ID in wxWidgets.
-        dlg = wx.MessageDialog(self, "GUI for IPM\nmailto: Radomir.Azizov@gmail.com\nWipm v0.8  02.2012", "About", wx.OK)
+        dlg = wx.MessageDialog(self, "IPM with graphical interface\nmailto: Radomir.Azizov@gmail.com\nWipm v0.8  02.2012", "About", wx.OK)
         dlg.ShowModal() # Show it
         dlg.Destroy() # finally destroy it when finished.
 
@@ -163,7 +163,7 @@ class MainWindow(wx.Frame):
         dialog_serial_cfg.Destroy()
         if result == wx.ID_OK or e is not None:
                 self.cfg.set('SERIAL', 'port', ser.portstr)
-                self.cfg.set('SERIAL', 'baudrate', ser.baudrate)
+                self.cfg.set('SERIAL', 'baudrate', str(ser.baudrate))
                 #self.cfg.set('SERIAL', 'bytesize', serial.bytesize)
                 #self.cfg.set('SERIAL', 'parity', serial.parity)
                 #self.cfg.set('SERIAL', 'stopbits', serial.stopbits)
