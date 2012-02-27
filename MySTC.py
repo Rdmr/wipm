@@ -3,6 +3,7 @@ import  wx.stc  as  stc
 import PySTC
 import pmImgCreator
 from SerialConnection import SerialConnection
+import serial
 
 MAX_OBJ_SIZE = 2048
 SERIALRX = wx.NewEventType()
@@ -82,8 +83,15 @@ class MySTC(PySTC.MySTC):
             return
         port = self.parentFrame.cfg.get('SERIAL','port')
         baud = self.parentFrame.cfg.get('SERIAL','baudrate')
-        conn = SerialConnection(port,baud)
-        conn.write(img)
+        try:
+            conn = SerialConnection(port,baud)
+        except Exception, e:
+            dlg = wx.MessageDialog(self, "%s:%s" % (e.__class__.__name__, e), 'Error', wx.OK|wx.ICON_ERROR)
+            dlg.ShowModal()
+            dlg.Destroy()
+            return
+            
+        conn.write(img)                
         self.AppendText(">")
         prev = ''
         for c in conn.read():
